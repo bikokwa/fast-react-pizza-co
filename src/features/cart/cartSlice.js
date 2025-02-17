@@ -27,6 +27,9 @@ const cartSlice = createSlice({
       );
       currentItem.quantity--;
       currentItem.totalPrice = currentItem.quantity * currentItem.unitPrice;
+
+      if (currentItem.quantity === 0)
+        cartSlice.caseReducers.deleteItem(state, action);
     },
     clearCart(state) {
       state.cart = [];
